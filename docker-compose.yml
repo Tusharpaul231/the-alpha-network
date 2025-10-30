@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+	mongodb:
+		image: mongo:latest
+		container_name: alphanetwork_mongo
+		restart: always
+		ports:
+			- "27017:27017"
+		environment:
+			MONGO_INITDB_DATABASE: alphanetwork
+		volumes:
+			- mongo_data:/data/db
+
+	backend:
+		build: ./backend
+		container_name: alphanetwork_backend
+		restart: always
+		ports:
+			- "5000:5000"
+		environment:
+			- MONGODB_URI=mongodb://mongodb:27017/alphanetwork
+			- JWT_SECRET=your_super_secret_jwt_key
+			- NODE_ENV=development
+		depends_on:
+			- mongodb
+		volumes:
+			- ./backend:/app
+			- /app/node_modules
+
+	frontend:
+		build: ./frontend
+		container_name: alphanetwork_frontend
+		restart: always
+		ports:
+			- "3000:3000"
+		environment:
+			- REACT_APP_API_URL=http://localhost:5000/api
+		depends_on:
+			- backend
+		volumes:
+			- ./frontend:/app
+			- /app/node_modules
+
+volumes:
+	mongo_data:
+
