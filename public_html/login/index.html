@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Alpha Network - Access</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">The Alpha Network</div>
+  </nav>
+
+  <main>
+    <section class="access-panel card">
+      <h2 class="container">Community Access</h2>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="login">Login to the Community</div>
+        <div class="tab" data-tab="request">Get an Access Pass</div>
+      </div>
+
+      <!-- LOGIN PANEL -->
+      <div id="panel-login">
+        <div class="form-row"><label>Name</label><input id="login-name" /></div>
+        <div class="form-row"><label>Mobile</label><select id="login-country"></select><input id="login-mobile" /></div>
+        <div class="form-row"><label>Email</label><input id="login-email" type="email" /></div>
+        <div class="form-row"><label>Alpha Code</label><input id="login-code" /></div>
+        <div class="form-row">
+          <label>Captcha</label>
+          <div id="svgCaptcha" class="captcha-img"></div>
+          <input id="captchaAnswer" />
+          <button id="refreshCaptcha" class="btn">Refresh</button>
+        </div>
+        <div style="text-align:right">
+          <button id="loginSubmit" class="btn">Login</button>
+        </div>
+        <div id="loginMessage"></div>
+      </div>
+
+      <!-- ACCESS PASS REQUEST PANEL -->
+      <div id="panel-request" style="display:none">
+        <div class="form-row"><label>Name</label><input id="req-name" /></div>
+        <div class="form-row"><label>Mobile</label><select id="req-country"></select><input id="req-mobile" /></div>
+        <div class="form-row"><label>Email</label><input id="req-email" type="email" /></div>
+        <div style="text-align:right"><button id="reqSubmit" class="btn">Request Pass</button></div>
+        <div id="reqMessage"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="login.js"></script> 
+</body>
+</html>

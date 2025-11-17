@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Alpha Network - The 1% Network</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 5% 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #a8b2d1;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #a8b2d1;
+            margin-top: 0.5rem;
+        }
+
+        .hero h1:first-of-type {
+            color: #ffffff;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid rgba(255,255,255,0.85);
+            animation: typing 3s steps(25, end), blink 0.75s step-end infinite, glowPulse 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #a8b2d1;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 5%;
+            background: #0a0e27;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #667eea;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #a8b2d1;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a8b2d1;
+        }
+
+        .pricing-features li strong {
+            color: #fff;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+        }
+
+        .testimonial-country {
+            color: #a8b2d1;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            color: #a8b2d1;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-top: 1rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 100px 5%;
+            background: #0a0e27;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #a8b2d1;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 5%;
+            background: #000;
+            text-align: center;
+            color: #a8b2d1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">The Alpha Network</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <button class="cta-btn">Join 1% Network</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome To The 1% World!</h1>
+        <h1>Trade With Up To $1M Capital</h1>
+        <p>No Excuses. No Delays. 24 Hours Payout Guaranteed</p>
+        <button class="cta-btn" style="font-size: 1.1rem; padding: 1rem 3rem;">Start Trading Now</button>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Countries Covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$1M</div>
+                <div class="stat-label">Max Allocation</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24Hrs</div>
+                <div class="stat-label">Payout Guaranteed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Join Alpha Network</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Access the Exclusive 1% Network</h3>
+                <p>We are not an open forum. Membership is curated and exclusive, 
+                    ensuring you are networking only with highly experienced, serious, 
+                    and actively contributing traders, eliminating the noise found in 
+                    public communities.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Unprecedented Capital & Funding</h3>
+                <p>Trade Up to ₹1 Cr Investor Capital: You have the immediate 
+                    potential to manage significant funding, accelerating your 
+                    professional growth and allowing you to execute strategies 
+                    at a much larger scale than personal capital allows.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Professional Structure & Support</h3>
+                <p>Trading is isolating. Our network provides a confidential 
+                    support system where you can discuss risk management, 
+                    battle emotional biases, and maintain the discipline 
+                    required to stay profitable.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Best Trading Conditions</h3>
+                <p>Tight spreads, no swaps, fast execution - everything you need to succeed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>On-Demand Payouts</h3>
+                <p>Need your payout instantly? No problem! Withdraw anytime.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>The Alpha Network Joining Kit</h3>
+                <p>Join 1% club with your joining kit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Join The 1% Network</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-card popular">
+                <span class="popular-badge">Most Popular</span>
+                <h3>Get Unlimited Funding</h3>
+                <div class="price">Initial investment for the Alpha Vetting Course is <br>₹6,000<span>/ one-time</span> Apply now</div>
+                <ul class="pricing-features">
+                    <li><p>"The top 1% don't just follow trends—they create them. 
+                        If you’re ready to move beyond retail trading and into 
+                        institutional strategy, your application starts here. 
+                        Limited space available."
+                        </p>
+                    </li>
+                </ul>
+                <button class="cta-btn" style="width: 100%; margin-top: 1rem;">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Traders Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">JD</div>
+                    <div>
+                        <div class="testimonial-name">Jayanta Das</div>
+                        <div class="testimonial-country">Siliguri</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Before joining, my biggest limitation was capital. 
+                    The Alpha Network’s program immediately qualified me for ₹1 Cr investor funding. 
+                    That’s not a number you see offered casually. This is a game-changer that lets 
+                    you execute strategies at a professional scale, not a retail one. It's the difference 
+                    between trading and building an empire.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">SA</div>
+                    <div>
+                        <div class="testimonial-name">Sunita Agarwal</div>
+                        <div class="testimonial-country">Darjeeling</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">The true value here is the 1% Communities Network. The quality 
+                    of the conversations and insights is unparalleled. The vetting process works—everyone 
+                    here is serious, dedicated, and contributing high-level analysis. I’ve gained more 
+                    practical knowledge in three months here than in three years of online forums.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">RM</div>
+                    <div>
+                        <div class="testimonial-name">Raj Malhotra</div>
+                        <div class="testimonial-country">Siliguri</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">This isn't just a course; it's an end-to-end professional 
+                    structure. The six months of unlimited funding support gave me the stability to 
+                    stress-test my strategy without constant financial pressure. The professionalism, 
+                    from the Joining Kit to the mentorship, makes you feel like you’ve been recruited 
+                    by a top-tier firm.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">MC</div>
+                    <div>
+                        <div class="testimonial-name">Maria Chettri</div>
+                        <div class="testimonial-country">Kalingpong</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">The small initial investment for the Vetting Course proved 
+                    to be the highest ROI decision I’ve ever made. I quickly moved from struggling for 
+                    consistency to managing serious capital. If you are serious about alpha generation, 
+                    this network pays for itself tenfold by eliminating guesswork and providing direct 
+                    access.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">AB</div>
+                    <div>
+                        <div class="testimonial-name">Annesha Bhattacharya</div>
+                        <div class="testimonial-country">Siliguri</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">They are serious about maintaining the '1%.' The vetting 
+                    process isn't easy, but that's the point. It ensures the integrity of the network. 
+                    You realize very quickly that you are not paying for a discounted course; you are 
+                    investing to qualify for an elite environment where only performance matters.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">TP</div>
+                    <div>
+                        <div class="testimonial-name">Tushar Paul</div>
+                        <div class="testimonial-country">Kolkata</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">The Alpha Network transformed my perspective on the market. 
+                    It provided the final pieces of the puzzle: professional accountability and the required 
+                    capital. I moved from being an individual trader to a managed capital professional almost 
+                    overnight. Highly recommend for those looking to truly scale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What is a Prop Trading Firm?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    A Prop Trading Firm allows traders to trade with higher simulated capital while earning real money based on their consistently profitable trading skills. It enables traders to trade without risking their own funds.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I qualify for a funded account?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    You can qualify through our evaluation process by meeting profit targets and following risk management rules, or access Instant Funded Accounts directly without any evaluation challenge.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How much can I earn?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Earnings depend on your trading performance. You can earn up to 100% of the profits you generate with no upper limit. The more consistent and profitable you are, the more you earn.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How fast are payouts?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    We guarantee payouts within 24 business hours. Our average processing time is under 2 hours, and we offer on-demand payouts for instant access to your earnings.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What are the trading rules?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    You must hit profit targets, respect drawdown limits, and maintain consistency. Specific rules vary by program type - check each challenge card for detailed requirements.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Alpha Network. All rights reserved. Trade responsibly.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Risk Warning: Trading involves risk. Past performance is not indicative of future results.</p>
+        <br><p>Powered by Deep Orbit Pvt. Ltd.</p>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
