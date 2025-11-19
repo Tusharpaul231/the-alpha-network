@@ -1,8 +1,7 @@
 const API_BASE =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "http://localhost:4000/api"
-    : "https://the-alpha-network-backend.onrender.com/api";
-
+    : "https://the-alpha-network-backend-production.up.railway.app/api";
 
 // -------------------------------
 // TAB SWITCHING
