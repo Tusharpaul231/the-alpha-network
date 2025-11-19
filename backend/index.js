@@ -42,7 +42,9 @@ app.use(express.static(path.join(__dirname, '..', 'public_html')));
 const MONGO = process.env.MONGO_URI;
 if (!MONGO) console.warn("⚠ MONGO_URI missing in .env");
 
-mongoose.connect(MONGO)
+mongoose.connect(MONGO, {
+  serverSelectionTimeoutMS: 5000
+})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("Mongo Error:", err));
 
