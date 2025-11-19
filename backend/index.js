@@ -13,7 +13,15 @@ const exportRunner = require('./utils/exportExcel');
 const app = express();
 
 // === MIDDLEWARE ===
-app.use(cors());
+
+const corsOptions = {
+  origin: ['https://the-alpha-network.onrender.com'], // frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 // Serve all static files from public_html
