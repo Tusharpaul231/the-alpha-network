@@ -1,5 +1,5 @@
 {
-  "name": "the-alpha-network",
+  "name": "the-alpha-network-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
