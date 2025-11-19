@@ -17,9 +17,9 @@ const app = express();
 // =========================
 app.use(cors({
   origin: [
-    "https://the-alpha-network.onrender.com",
     "https://thealphanetwork.in",
     "https://www.thealphanetwork.in",
+    "https://thealphanetwork.vercel.app",
     "http://localhost:3000",
     "http://localhost:4000"
   ],
