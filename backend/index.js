@@ -19,12 +19,13 @@ app.use(cors({
   origin: [
     "https://thealphanetwork.in",
     "https://www.thealphanetwork.in",
-    "https://thealphanetwork.vercel.app",
+    "https://the-alpha-network-production.up.railway.app",   // Railway FRONTEND
+    "https://the-alpha-network-backend-production.up.railway.app", // Railway BACKEND (optional)
     "http://localhost:3000",
     "http://localhost:4000"
   ],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
