@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Alpha Network - Access</title>
-  <link rel="icon" href="logo.png" />
+  <link rel="icon" href="../the-alpha-network/public/logo.png" />
   <link rel="stylesheet" href="/login/style.css" />
 </head>
 <body>
@@ -14,11 +14,11 @@
 
   <main>
     <section class="access-panel card">
-      <h2 class="container">Community Access</h2>
+      <h2 class="container">ACCESS THE 1% NETWORK</h2>
 
       <div class="tabs">
-        <div class="tab active" data-tab="login">Login to the Community</div>
-        <div class="tab" data-tab="request">Get an Access Pass</div>
+        <div class="tab active" data-tab="login">Login To 1% Club</div>
+        <div class="tab" data-tab="request">Alpha Talent Manifest Competition</div>
       </div>
 
       <!-- LOGIN PANEL -->
@@ -26,6 +26,7 @@
         <div class="form-row"><label>Name</label><input id="login-name" /></div>
         <div class="form-row"><label>Mobile</label><select id="login-country"></select><input id="login-mobile" /></div>
         <div class="form-row"><label>Email</label><input id="login-email" type="email" /></div>
+        <!-- <div class="form-row"><label>---------- ||  Entry Protocol  || ----------</label></div> -->
         <div class="form-row"><label>Alpha Code</label><input id="login-code" /></div>
         <div class="form-row">
           <label>Captcha</label>
@@ -40,13 +41,60 @@
       </div>
 
       <!-- ACCESS PASS REQUEST PANEL -->
-      <div id="panel-request" style="display:none">
-        <div class="form-row"><label>Name</label><input id="req-name" /></div>
-        <div class="form-row"><label>Mobile</label><select id="req-country"></select><input id="req-mobile" /></div>
-        <div class="form-row"><label>Email</label><input id="req-email" type="email" /></div>
-        <div style="text-align:right"><button id="reqSubmit" class="btn">Request Pass</button></div>
-        <div id="reqMessage"></div>
-      </div>
+<div id="panel-request" style="display:none">
+  <div class="form-row">
+    <label>Name</label>
+    <input id="req-name" />
+  </div>
+
+  <div class="form-row">
+    <label>Mobile</label>
+    <select id="req-country"></select>
+    <input id="req-mobile" />
+  </div>
+
+  <div class="form-row">
+    <label>Email</label>
+    <input id="req-email" type="email" />
+  </div>
+
+  <div class="form-row">
+    <label>Financial Freedom: Is financial freedom simply having enough money that you never have to work again if you choose not to?
+    </label>
+    <input id="q1" type="text" placeholder="Your answer..." />
+  </div>
+
+  <div class="form-row">
+    <label>AI's Importance: Do you believe Artificial Intelligence (AI) already has a significant impact on the daily life of an average person?
+    </label>
+    <input id="q2" type="text" placeholder="Your answer..." />
+  </div>
+
+  <div class="form-row">
+    <label>Future Automation: Do you think it is likely that all cashiers in large supermarkets will be replaced by automation or AI within the next 10 years?
+    </label>
+    <input id="q3" type="text" placeholder="Your answer..." />
+  </div>
+
+  <div class="form-row">
+    <label>AI and Human Work: If AI takes over routine tasks, will the majority of human work shift to focusing on creativity, ethics, and emotional intelligence?
+    </label>
+    <input id="q4" type="text" placeholder="Your answer..." />
+  </div>
+
+  <div class="form-row">
+    <label>Human Oversight: Should a human doctor or judge always have the final decision-making authority over a perfect recommendation given by an AI?
+    </label>
+    <input id="q5" type="text" placeholder="Your answer..." />
+  </div>
+
+  <div style="text-align:right">
+    <button id="reqSubmit" class="btn">Request Alpha Black Card Seal</button>
+  </div>
+
+  <div id="reqMessage"></div>
+</div>
+
     </section>
   </main>
 

@@ -4,11 +4,37 @@
 }
 
 body {
-  background: var(--bg);
-  color: #fff;
-  font-family: Segoe UI, Arial, sans-serif;
   margin: 0;
   padding: 20px;
+  height: 100vh;
+  background: url("bg.png") no-repeat center center fixed;
+  background-size: cover;
+  
+  color: #fff;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* dark overlay so login box stands out */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55); /* adjust darkness */
+  z-index: -1;
+}
+
+/* login panel pop-out effect */
+.access-panel {
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 25px 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
 nav {
@@ -65,7 +91,7 @@ nav {
 
 .form-row label {
   width: 120px;
-  color: var(--muted);
+  color: white;
 }
 
 .form-row input,
