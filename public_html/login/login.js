@@ -113,8 +113,14 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
   const mobile = document.getElementById("req-mobile").value.trim();
   const email = document.getElementById("req-email").value.trim();
 
-  if (!name || !countryCode || !mobile || !email) {
-    showMessage("reqMessage", "Please fill all fields", "error");
+  const q1 = document.getElementById("q1").value.trim();
+  const q2 = document.getElementById("q2").value.trim();
+  const q3 = document.getElementById("q3").value.trim();
+  const q4 = document.getElementById("q4").value.trim();
+  const q5 = document.getElementById("q5").value.trim();
+
+  if (!name || !countryCode || !mobile || !email || !q1 || !q2 || !q3 || !q4 || !q5) {
+    showMessage("reqMessage", "Please answer all questions", "error");
     return;
   }
 
@@ -122,23 +128,30 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
     const res = await fetch(API_BASE + "/request-pass", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, countryCode, mobile, email }),
+      body: JSON.stringify({
+        name,
+        countryCode,
+        mobile,
+        email,
+        questions: { q1, q2, q3, q4, q5 }
+      }),
     });
 
     const j = await res.json();
 
     if (res.ok) {
-      showMessage("reqMessage", "Request received. Check email if configured", "success");
-      document.getElementById("req-name").value = "";
-      document.getElementById("req-mobile").value = "";
-      document.getElementById("req-email").value = "";
+      showMessage("reqMessage", "Request received!", "success");
+      ["req-name","req-mobile","req-email","q1","q2","q3","q4","q5"].forEach(id=>document.getElementById(id).value="");
     } else {
       showMessage("reqMessage", j.error || "Failed", "error");
     }
+
   } catch (err) {
     showMessage("reqMessage", "Server error", "error");
   }
 });
+
+
 
 // -------------------------------
 // COUNTRY CODES
