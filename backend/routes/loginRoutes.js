@@ -32,8 +32,8 @@ router.get('/captcha', (req,res)=>{
 
 router.post('/login', async (req,res)=>{
   try {
-    const { name, countryCode, mobile, email, alphaCode, captchaId, captchaAnswer } = req.body;
-    if(!name||!countryCode||!mobile||!email||!alphaCode||!captchaId||!captchaAnswer) {
+    const { name, countryCode, mobile, email, city, alphaCode, captchaId, captchaAnswer } = req.body;
+    if(!name||!countryCode||!mobile||!email||!city||!alphaCode||!captchaId||!captchaAnswer) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
     const cap = captchaStore.get(captchaId);
@@ -57,7 +57,7 @@ router.post('/login', async (req,res)=>{
       }
     }
 
-    const record = new LoginRecord({ name, countryCode, mobile, email, alphaCode, captchaId, ip: req.ip, accepted });
+    const record = new LoginRecord({ name, countryCode, mobile, email, city, alphaCode, captchaId, ip: req.ip, accepted });
     await record.save();
     captchaStore.delete(captchaId);
     res.json({ success: true, alphaAccepted: accepted, message: accepted ? 'Alpha code accepted' : 'Alpha code invalid/pending' });

@@ -58,10 +58,11 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
   const countryCode = document.getElementById("login-country").value;
   const mobile = document.getElementById("login-mobile").value.trim();
   const email = document.getElementById("login-email").value.trim();
+  const city = document.getElementById("login-city").value.trim();
   const alphaCode = document.getElementById("login-code").value.trim();
   const captchaAnswer = document.getElementById("captchaAnswer").value.trim();
 
-  if (!name || !countryCode || !mobile || !email || !alphaCode || !captchaAnswer) {
+  if (!name || !countryCode || !mobile || !email || !city || !alphaCode || !captchaAnswer) {
     showMessage("loginMessage", "Please fill all fields", "error");
     return;
   }
@@ -75,6 +76,7 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
         countryCode,
         mobile,
         email,
+        city,
         alphaCode,
         captchaId: currentCaptcha.id,
         captchaAnswer,
@@ -112,15 +114,19 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
   const countryCode = document.getElementById("req-country").value;
   const mobile = document.getElementById("req-mobile").value.trim();
   const email = document.getElementById("req-email").value.trim();
+  const city = document.getElementById("req-city").value.trim();
+  const qualification = document.getElementById("req-qual").value.trim();
+  const dob = document.getElementById("req-dob").value;
+  const gender = document.getElementById("req-gender").value;
 
-  const q1 = document.getElementById("q1").value.trim();
-  const q2 = document.getElementById("q2").value.trim();
-  const q3 = document.getElementById("q3").value.trim();
-  const q4 = document.getElementById("q4").value.trim();
-  const q5 = document.getElementById("q5").value.trim();
+  const q1 = document.querySelector("input[name='q1']:checked")?.value;
+  const q2 = document.querySelector("input[name='q2']:checked")?.value;
+  const q3 = document.querySelector("input[name='q3']:checked")?.value;
+  const q4 = document.querySelector("input[name='q4']:checked")?.value;
+  const q5 = document.querySelector("input[name='q5']:checked")?.value;
 
-  if (!name || !countryCode || !mobile || !email || !q1 || !q2 || !q3 || !q4 || !q5) {
-    showMessage("reqMessage", "Please answer all questions", "error");
+  if (!name || !countryCode || !mobile || !email || !city || !qualification || !dob || !gender || !q1 || !q2 || !q3 || !q4 || !q5) {
+    showMessage("reqMessage", "Please fill all fields and answer all questions", "error");
     return;
   }
 
@@ -133,15 +139,23 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
         countryCode,
         mobile,
         email,
+        city,
+        qualification,
+        dob,
+        gender,
         questions: { q1, q2, q3, q4, q5 }
-      }),
+      })
     });
 
     const j = await res.json();
 
     if (res.ok) {
       showMessage("reqMessage", "Request received!", "success");
-      ["req-name","req-mobile","req-email","q1","q2","q3","q4","q5"].forEach(id=>document.getElementById(id).value="");
+
+      ["req-name","req-mobile","req-email","req-city","req-qual","req-dob","req-gender"]
+      .forEach(id=>document.getElementById(id).value="");
+
+      document.querySelectorAll("input[type=radio]").forEach(r=>r.checked=false);
     } else {
       showMessage("reqMessage", j.error || "Failed", "error");
     }
@@ -150,7 +164,6 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
     showMessage("reqMessage", "Server error", "error");
   }
 });
-
 
 
 // -------------------------------

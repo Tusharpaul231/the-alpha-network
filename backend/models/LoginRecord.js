@@ -6,6 +6,7 @@ const LoginRecordSchema = new Schema({
   countryCode: String,
   mobile: String,
   email: String,
+  city: String,
   alphaCode: String,
   captchaId: String,
   accepted: { type: Boolean, default: false },

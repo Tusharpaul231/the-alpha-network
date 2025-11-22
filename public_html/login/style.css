@@ -137,6 +137,40 @@ select option {
   border-radius: 8px;
 }
 
+/* Side-by-side rows */
+.row-2 {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.row-2 .form-row {
+  flex: 1;
+}
+
+/* Question formatting */
+.question-block {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.q-title {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #d0d4e4;
+}
+
+/* Radio alignment */
+.question-block label {
+  margin-right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .message.success {
   background: rgba(34, 197, 94, 0.08);
   color: #bbf7d0;
