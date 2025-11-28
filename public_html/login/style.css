@@ -180,3 +180,96 @@ select option {
   background: rgba(239, 68, 68, 0.08);
   color: #fecaca;
 }
+
+
+
+/* --------- Mobile / small-screen fixes --------- */
+@media (max-width: 900px) {
+  .card, .access-panel {
+    width: 94%;
+    margin: 12px auto;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .access-panel {
+    background: rgba(10, 12, 27, 0.65); /* stronger contrast so card stands out */
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Put labels above inputs for small screens */
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row label {
+    width: auto;
+    margin-bottom: 6px;
+    color: #e8eefc;
+    font-size: 14px;
+  }
+
+  .form-row input,
+  .form-row select {
+    width: 100%;
+  }
+
+  /* Two-column rows should stack */
+  .row-2,
+  .form-row.two-col {
+    flex-direction: column;
+  }
+
+  .row-2 .form-row { margin-bottom: 12px; }
+
+  /* Questions: question text on top, radios below centered */
+  .question-block {
+    padding: 10px;
+    margin-bottom: 14px;
+  }
+
+  .q-title {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .question-options {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .question-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  /* Make captcha area fit better */
+  .captcha-img img { max-width: 140px; height: auto; }
+
+  /* Smaller nav logo on mobile */
+  nav .logo { font-size: 16px; }
+
+  /* tighten spacing of tabs on small screens */
+  .tabs { gap: 6px; flex-wrap: wrap; }
+}
+
+/* Slight layout improvement for medium screens (tablets) */
+@media (min-width: 601px) and (max-width: 1200px) {
+  .row-2 { gap: 12px; }
+  .form-row label { width: 120px; }
+}
+
+/* Ensure the overlay is above the background but behind the form */
+body::before { z-index: 0; }
+.access-panel { position: relative; z-index: 1; }
+
+/* Optional: subtle darker card shadow so it stands out on bright backgrounds */
+.access-panel { box-shadow: 0 12px 40px rgba(2,6,23,0.6); }
+
+
