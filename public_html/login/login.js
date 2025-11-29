@@ -110,23 +110,41 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
 // REQUEST ACCESS PASS
 // -------------------------------
 document.getElementById("reqSubmit").addEventListener("click", async () => {
+
   const name = document.getElementById("req-name").value.trim();
   const countryCode = document.getElementById("req-country").value;
   const mobile = document.getElementById("req-mobile").value.trim();
   const email = document.getElementById("req-email").value.trim();
+
   const city = document.getElementById("req-city").value.trim();
-  const qualification = document.getElementById("req-qual").value.trim();
   const dob = document.getElementById("req-dob").value;
   const gender = document.getElementById("req-gender").value;
+  const qualification = document.getElementById("req-qual").value;
+  const semester = document.getElementById("semester").value;
+  const specialization = document.getElementById("specialization").value.trim();
 
-  const q1 = document.querySelector("input[name='q1']:checked")?.value;
-  const q2 = document.querySelector("input[name='q2']:checked")?.value;
-  const q3 = document.querySelector("input[name='q3']:checked")?.value;
-  const q4 = document.querySelector("input[name='q4']:checked")?.value;
-  const q5 = document.querySelector("input[name='q5']:checked")?.value;
+  const questions = {};
+  for (let i = 1; i <= 10; i++) {
+    const ans = document.querySelector(`input[name="q${i}"]:checked`);
+    if (!ans) {
+      showMessage("reqMessage", `Please answer question ${i}`, "error");
+      return;
+    }
+    questions[`q${i}`] = ans.value;
+  }
 
-  if (!name || !countryCode || !mobile || !email || !city || !qualification || !dob || !gender || !q1 || !q2 || !q3 || !q4 || !q5) {
-    showMessage("reqMessage", "Please fill all fields and answer all questions", "error");
+  if (
+    !name ||
+    !mobile ||
+    !email ||
+    !city ||
+    !dob ||
+    !gender ||
+    !qualification ||
+    !semester ||
+    !specialization
+  ) {
+    showMessage("reqMessage", "Please fill all the fields", "error");
     return;
   }
 
@@ -140,22 +158,19 @@ document.getElementById("reqSubmit").addEventListener("click", async () => {
         mobile,
         email,
         city,
-        qualification,
         dob,
         gender,
-        questions: { q1, q2, q3, q4, q5 }
-      })
+        qualification,
+        semester,
+        specialization,
+        questions
+      }),
     });
 
     const j = await res.json();
 
     if (res.ok) {
-      showMessage("reqMessage", "Request received!", "success");
-
-      ["req-name","req-mobile","req-email","req-city","req-qual","req-dob","req-gender"]
-      .forEach(id=>document.getElementById(id).value="");
-
-      document.querySelectorAll("input[type=radio]").forEach(r=>r.checked=false);
+      showMessage("reqMessage", "Request received successfully!", "success");
     } else {
       showMessage("reqMessage", j.error || "Failed", "error");
     }

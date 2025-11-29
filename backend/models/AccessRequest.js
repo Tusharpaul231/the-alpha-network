@@ -7,21 +7,28 @@ const AccessRequestSchema = new Schema({
   mobile: String,
   email: String,
   city: String,
-  qualification: String,
   dob: String,
   gender: String,
-
+  qualification: String,
+  semester: String,
+  specialization: String,
+  
   questions: {
-    q1: { type: String, required: true },
-    q2: { type: String, required: true },
-    q3: { type: String, required: true },
-    q4: { type: String, required: true },
-    q5: { type: String, required: true },
+    q1: String,
+    q2: String,
+    q3: String,
+    q4: String,
+    q5: String,
+    q6: String,
+    q7: String,
+    q8: String,
+    q9: String,
+    q10: String,
   },
 
   approved: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now },
-  alphaCodeId: { type: Schema.Types.ObjectId, ref: 'AlphaCode', default: null }
+  alphaCodeId: { type: Schema.Types.ObjectId, ref: 'AlphaCode', default: null },
+  createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('AccessRequest', AccessRequestSchema);
