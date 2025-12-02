@@ -20,7 +20,7 @@ router.post('/booking', async (req, res) => {
 
     // send confirmation email (if transporter configured)
     const subject = 'Masterclass Booking Received - The Alpha Network';
-    const text = `Hi ${name},\n\nThanks for booking the Masterclass on ${bookingDate} at ${bookingTime}.\nWe will contact you with next steps.\n\nRegards,\nThe Alpha Network`;
+    const text = `Hi ${name},\n\nThanks for booking the Masterclass on ${bookingDate} of December, at ${bookingTime} PM.\nWe will contact you with next steps.\n\nRegards,\nThe Alpha Network`;
     emailService.sendSimpleEmail(email, subject, text).catch(err => console.warn('Email fail:', err.message));
 
     res.json({ success: true, message: 'Booking saved' });
