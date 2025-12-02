@@ -8,6 +8,7 @@ const path = require('path');
 const loginRoutes = require('./routes/loginRoutes');
 const requestRoutes = require('./routes/requestRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const bookingRoutes = require('./routes/BookingRoutes');
 const exportRunner = require('./utils/exportExcel');
 
 const app = express();
@@ -54,6 +55,7 @@ mongoose.connect(MONGO, {
 // =========================
 app.use('/api', loginRoutes);
 app.use('/api', requestRoutes);
+app.use('/api', bookingRoutes);
 app.use('/admin', adminRoutes);
 
 // =========================

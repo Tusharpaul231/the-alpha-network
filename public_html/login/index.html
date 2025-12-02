@@ -17,12 +17,58 @@
       <h2 class="container">ACCESS THE 1% NETWORK</h2>
 
       <div class="tabs">
-        <div class="tab active" data-tab="login">Login To 1% Club</div>
+        <div class="tab active" data-tab="book">Book A Masterclass</div>
+        <div class="tab" data-tab="login">Login To 1% Club</div>
         <div class="tab" data-tab="request">αlpha Talent Manifest Competition</div>
       </div>
 
+      <!-- BOOKING PANEL -->
+      <div id="panel-book" style="display:block">
+        <div class="form-row">
+          <label>Name</label>
+          <input id="booking-name" placeholder="Your name"/>
+        </div>
+        <div class="form-row">
+          <label>Mobile</label>
+          <select id="booking-country">
+          </select><input id="booking-mobile" placeholder="Your phone"/>
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input id="booking-email" type="email" placeholder="youremail@gmail.com"/>
+        </div>
+        <div class="form-row">
+          <label>αlpha Code</label>
+          <input id="booking-code" placeholder="Enter the code"/>
+        </div>
+        <div class="row-2">
+          <div class="form-row">
+            <label>Booking Date</label>
+            <select id="booking-date">
+              <option value="">Select</option>
+              <option value="3rd">03-12-2025, Wednesday</option>
+              <option value="4th">04-12-2025, Thursday</option>
+              <option value="5th">05-12-2025, Friday</option>
+              <option value="6th">06-12-2025, Saturday</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Booking Time</label>
+            <select id="booking-time">
+              <option value="">Select</option>
+              <option value="6-7">06:00 - 07:00 PM</option>
+              <option value="7-8">07:00 - 08:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <br><button id="bookingSubmit" class="btn">Book Now!</button>
+        </div>
+        <div id="bookingMessage"></div>
+      </div>
+
       <!-- LOGIN PANEL -->
-      <div id="panel-login">
+      <div id="panel-login" style="display:none">
         <div class="form-row"><label>Name</label><input id="login-name" placeholder="Your name"/></div>
         <div class="form-row"><label>Mobile</label><select id="login-country"></select><input id="login-mobile" placeholder="Your phone"/></div>
         <div class="form-row"><label>Email</label><input id="login-email" type="email" placeholder="youremail@gmail.com"/></div>
@@ -50,10 +96,8 @@
 
         <div class="form-row">
           <label>Mobile</label>
-          
             <select id="req-country"></select>
             <input id="req-mobile" placeholder="Your phone"/>
-
         </div>
 
         <div class="row-2">
