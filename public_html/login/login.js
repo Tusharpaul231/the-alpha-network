@@ -208,7 +208,7 @@ if (bookingBtn) {
     const bookingDate = document.getElementById("booking-date") ? document.getElementById("booking-date").value : "";
     const bookingTime = document.getElementById("booking-time") ? document.getElementById("booking-time").value : "";
 
-    if (!name || !countryCode || !mobile || !email || !bookingDate || !bookingTime) {
+    if (!name || !countryCode || !mobile || !email || !bookingCode || !bookingDate || !bookingTime) {
       showMessage("bookingMessage", "Please fill all fields", "error");
       return;
     }
