@@ -206,9 +206,7 @@ if (bookingBtn) {
     const email = document.getElementById("booking-email").value.trim();
     const bookingCode = document.getElementById("booking-code") ? document.getElementById("booking-code").value.trim() : "";
     const bookingDate = document.getElementById("booking-date") ? document.getElementById("booking-date").value : "";
-    const bookingTime = document.getElementById("booking-time") ? document.getElementById("booking-time").value : "";
-
-    if (!name || !countryCode || !mobile || !email || !bookingCode || !bookingDate || !bookingTime) {
+    if (!name || !countryCode || !mobile || !email || !bookingCode || !bookingDate) {
       showMessage("bookingMessage", "Please fill all fields", "error");
       return;
     }
@@ -224,7 +222,6 @@ if (bookingBtn) {
           email,
           bookingCode,
           bookingDate,
-          bookingTime,
         }),
       });
 
@@ -237,7 +234,6 @@ if (bookingBtn) {
         document.getElementById("booking-email").value = "";
         if (document.getElementById("booking-code")) document.getElementById("booking-code").value = "";
         if (document.getElementById("booking-date")) document.getElementById("booking-date").value = "";
-        if (document.getElementById("booking-time")) document.getElementById("booking-time").value = "";
       } else {
         showMessage("bookingMessage", j.error || "Booking failed", "error");
       }
