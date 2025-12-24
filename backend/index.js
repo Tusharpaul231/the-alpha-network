@@ -20,8 +20,8 @@ app.use(cors({
   origin: [
     "https://thealphanetwork.in",
     "https://www.thealphanetwork.in",
-    "https://the-alpha-network-production.up.railway.app",   // Railway FRONTEND
-    "https://the-alpha-network-backend-production.up.railway.app", // Railway BACKEND (optional)
+    "https://the-alpha-network.onrender.com",
+    "https://the-alpha-network-backend.onrender.com",
     "http://localhost:3000",
     "http://localhost:4000"
   ],
