@@ -1,0 +1,4 @@
+﻿src/stores/middleware/localStorage.ts(103,13): error TS2345: Argument of type '(partial: T | Partial<T> | ((state: T) => T | Partial<T>), replace: boolean | undefined) => void' is not assignable to parameter of type 'Get<Mutate<StoreApi<T>, Mps>, "setState", never>'.
+src/stores/middleware/syncMiddleware.ts(114,11): error TS6133: 'syncIfOnline' is declared but its value is never read.
+src/stores/middleware/syncMiddleware.ts(166,34): error TS6133: 'T' is declared but its value is never read.
+src/stores/useWishlistStore.ts(104,19): error TS6133: 'mergedItems' is declared but its value is never read.

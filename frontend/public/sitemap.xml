@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://thealphanetwork.in</loc>
+    <lastmod>2026-01-20T17:14:44.248Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/about</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/contact</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/login</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/register</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/cart</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thealphanetwork.in/wishlist</loc>
+    <lastmod>2026-01-20T17:14:44.249Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -1,0 +1,33 @@
+﻿
+> the-alpha-network-frontend@1.0.0 lint
+> eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+
+npm : 
+At line:1 char:1
++ npm run lint > lint_errors.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified:  
+   (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandE 
+   rror
+ 
+Oops! Something went wrong! :(
+
+ESLint: 8.57.1
+
+ESLint couldn't find a configuration file. 
+To set up a configuration file for this 
+project, please run:
+
+    npm init @eslint/config
+
+ESLint looked for configuration files in D:\M
+y-Projects\the-alpha-network\frontend\src 
+and its ancestors. If it found none, it then 
+looked in your home directory.
+
+If you think you already have a 
+configuration file or if you need more help, 
+please stop by the ESLint Discord server: 
+https://eslint.org/chat
+
