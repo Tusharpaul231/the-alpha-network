@@ -21,7 +21,13 @@ connectDB()
 // Middleware
 app.use(helmet()) // Security headers
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://thealphanetwork.in',
+    'https://www.thealphanetwork.in',
+    'https://the-alpha-network.onrender.com',
+    'https://the-alpha-network.vercel.app'
+  ],
   credentials: true
 }))
 app.use(express.json())
