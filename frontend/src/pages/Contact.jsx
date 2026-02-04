@@ -257,16 +257,30 @@ export default function Contact() {
             <h2 className="font-display font-bold text-3xl text-neutral-900 mb-8 text-center">
               Our Location
             </h2>
-            <div className="aspect-[21/9] bg-gradient-to-br from-neutral-200 to-neutral-300 rounded-xl flex items-center justify-center">
-              <div className="text-center">
-                <MapPin size={64} className="text-neutral-400 mx-auto mb-4" />
-                <p className="text-neutral-600 text-lg">
-                  Map integration placeholder
-                </p>
-                <p className="text-neutral-500 text-sm mt-2">
-                  Siliguri, West Bengal, India
-                </p>
-              </div>
+            <div className="aspect-[21/9] rounded-xl overflow-hidden shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113842.0722045011!2d88.39431592500001!3d26.7271012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e441e2d6dd0ff9%3A0x27f9a2e4836a1d60!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Alpha Network Location"
+              ></iframe>
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-neutral-600">
+                📍 Wownooks, Siliguri, West Bengal, India
+              </p>
+              <a 
+                href="https://www.google.com/maps/place/Wownooks+Siliguri/@26.7466033,88.4374592,17z/data=!3m1!4b1!4m6!3m5!1s0x39e441fc6b2690b1:0xf7a414a8eee02606!8m2!3d26.7466033!4d88.4374592!16s%2Fg%2F11yf7ktwys?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+              >
+                Open in Google Maps
+              </a>
             </div>
           </motion.div>
         </div>
