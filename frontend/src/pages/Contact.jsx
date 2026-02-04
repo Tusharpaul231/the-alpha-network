@@ -271,7 +271,7 @@ export default function Contact() {
             </div>
             <div className="mt-6 text-center">
               <p className="text-neutral-600">
-                📍 Wownooks, Siliguri, West Bengal, India
+                📍 4th Floor, Wownooks, D L Infiniti, Don Bosco More, Sevoke Rd, Ward 43, Siliguri, West Bengal 734001
               </p>
               <a 
                 href="https://www.google.com/maps/place/Wownooks+Siliguri/@26.7466033,88.4374592,17z/data=!3m1!4b1!4m6!3m5!1s0x39e441fc6b2690b1:0xf7a414a8eee02606!8m2!3d26.7466033!4d88.4374592!16s%2Fg%2F11yf7ktwys?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
