@@ -91,19 +91,19 @@ export default function Footer() {
               <p>
                 <span className="font-semibold text-white">Phone:</span>
                 <br />
-                +2 3055 386-6919
+                +91 70740-41201
               </p>
             </div>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61586649506436"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/01thealphanetwork/"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="Instagram"
               >

@@ -36,9 +36,9 @@ export const generateOrganizationSchema = () => {
         url: 'https://thealphanetwork.in',
         logo: 'https://thealphanetwork.in/logo.png', // Update with actual logo URL
         sameAs: [
-            'https://www.facebook.com/alphanetwork',
+            'https://www.facebook.com/profile.php?id=61586649506436',
             'https://twitter.com/alphanetwork',
-            'https://www.instagram.com/alphanetwork'
+            'https://www.instagram.com/01thealphanetwork'
         ]
     };
 };

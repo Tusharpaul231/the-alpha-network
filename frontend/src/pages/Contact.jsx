@@ -42,8 +42,8 @@ export default function Contact() {
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      value: '+2 3055 386-6919',
-      link: 'tel:+23055386919'
+      value: '+91 70740-41201',
+      link: 'tel:+917074041201'
     },
     {
       icon: <MapPin size={24} />,
@@ -54,8 +54,8 @@ export default function Contact() {
   ]
 
   const socialLinks = [
-    { icon: <Facebook size={20} />, label: 'Facebook', url: '#' },
-    { icon: <Instagram size={20} />, label: 'Instagram', url: '#' },
+    { icon: <Facebook size={20} />, label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61586649506436' },
+    { icon: <Instagram size={20} />, label: 'Instagram', url: 'https://www.instagram.com/01thealphanetwork/' },
     { icon: <Linkedin size={20} />, label: 'LinkedIn', url: '#' },
     { icon: <Twitter size={20} />, label: 'Twitter', url: '#' }
   ]

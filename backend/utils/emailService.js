@@ -79,7 +79,7 @@ export const sendQueryConfirmationEmail = async (query) => {
             <h3 style="margin-top: 0; color: #333;">Your Query:</h3>
             <p>${query.query}</p>
           </div>
-          <p>If you need immediate assistance, please call us at <strong>+2 3055 386-6919</strong>.</p>
+          <p>If you need immediate assistance, please call us at <strong>+91 70740-41201</strong>.</p>
           <p>Best regards,<br><strong>The Alpha Network Team</strong></p>
         </div>
       `
