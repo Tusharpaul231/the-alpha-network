@@ -86,14 +86,21 @@ export default function Home() {
               className="relative"
             >
               <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-8 border border-neutral-200">
-                <div className="aspect-square bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="w-32 h-32 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                      <span className="text-6xl">🤖</span>
-                    </div>
-                    <p className="font-display font-bold text-2xl">Alpha Restaurant Robot</p>
-                    <p className="text-blue-100 mt-2">Autonomous Serving Robot</p>
-                  </div>
+                <div className="aspect-square rounded-xl overflow-hidden bg-neutral-200">
+                  <img 
+                    src="/images/hero/restaurant-robot.png" 
+                    alt="Alpha Restaurant Robot"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null; // Prevent infinite loop
+                      e.target.src = 'https://via.placeholder.com/800x800?text=Restaurant+Robot'
+                    }}
+                  />
+                </div>
+                <div className="mt-6 text-center">
+                  <p className="font-display font-bold text-2xl text-neutral-900">Alpha Restaurant Robot</p>
+                  <p className="text-neutral-600 mt-2">Autonomous Serving Robot</p>
                 </div>
               </div>
               {/* Decorative elements */}
@@ -131,8 +138,17 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 className="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center text-6xl">
-                  {index === 0 ? '💆' : index === 1 ? '🥽' : '📺'}
+                <div className="aspect-[4/3] overflow-hidden bg-neutral-200">
+                  <img 
+                    src={`/images/featured/${product.slug}.jpeg`}
+                    alt={product.name}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://via.placeholder.com/800x600?text=' + encodeURIComponent(product.name)
+                    }}
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="font-display font-bold text-xl text-neutral-900 mb-2">
@@ -209,8 +225,17 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-2xl flex items-center justify-center text-9xl">
-                🤖
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-neutral-200">
+                <img 
+                  src="/images/products/alpha-restaurant-robot/main.jpeg"
+                  alt="Alpha Restaurant Robot"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://via.placeholder.com/800x800?text=Alpha+Restaurant+Robot'
+                  }}
+                />
               </div>
             </motion.div>
           </div>

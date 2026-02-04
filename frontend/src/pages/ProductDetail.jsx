@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Download, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
@@ -8,6 +8,14 @@ export default function ProductDetail() {
   const { slug } = useParams()
   const [showDemoModal, setShowDemoModal] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  // Set initial image when slug is available
+  useEffect(() => {
+    if (slug) {
+      setSelectedImage(`/images/products/${slug}/image-1.jpeg`)
+    }
+  }, [slug])
 
   // Mock product data - in production, fetch from API
   const productData = {
@@ -165,14 +173,56 @@ export default function ProductDetail() {
         <section className="bg-white border-b border-neutral-200">
           <div className="container-custom section-padding">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Product Image */}
+              {/* Product Image Gallery */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="relative"
               >
-                <div className="aspect-square bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center text-9xl shadow-xl">
-                  {product.image}
+                {/* Main Image */}
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-xl mb-4 bg-neutral-200 flex items-center justify-center">
+                  {selectedImage ? (
+                    <img 
+                      src={selectedImage}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://via.placeholder.com/1200x1200?text=' + encodeURIComponent(product.name)
+                      }}
+                    />
+                  ) : (
+                    <div className="text-neutral-400 text-center">
+                      <div className="text-6xl mb-4">📷</div>
+                      <p>Loading image...</p>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Thumbnail Gallery */}
+                <div className="grid grid-cols-4 gap-4">
+                  {[1, 2, 3, 4].map((num) => (
+                    <button
+                      key={num}
+                      onClick={() => setSelectedImage(`/images/products/${slug}/image-${num}.jpeg`)}
+                      className={`aspect-square rounded-lg overflow-hidden border-2 transition-all bg-neutral-200 ${
+                        selectedImage === `/images/products/${slug}/image-${num}.jpeg`
+                          ? 'border-primary'
+                          : 'border-neutral-200 hover:border-primary/50'
+                      }`}
+                    >
+                      <img 
+                        src={`/images/products/${slug}/image-${num}.jpeg`}
+                        alt={`${product.name} ${num}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://via.placeholder.com/300x300?text=Image+' + num
+                        }}
+                      />
+                    </button>
+                  ))}
                 </div>
               </motion.div>
 

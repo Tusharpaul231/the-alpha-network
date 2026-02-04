@@ -76,8 +76,17 @@ export default function Products() {
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Product Image */}
-                  <div className="md:w-2/5 aspect-square md:aspect-auto bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center text-8xl">
-                    {product.image}
+                  <div className="md:w-2/5 aspect-square md:aspect-auto overflow-hidden bg-neutral-200">
+                    <img 
+                      src={`/images/products/${product.slug}/thumbnail.jpeg`}
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://via.placeholder.com/800x600?text=' + encodeURIComponent(product.name)
+                      }}
+                    />
                   </div>
 
                   {/* Product Info */}
