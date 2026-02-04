@@ -35,9 +35,11 @@ export default function Header() {
         <div className="container-custom flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">α</span>
-            </div>
+            <img 
+              src="/images/logo/logo.png" 
+              alt="The Alpha Network Logo"
+              className="h-12 md:h-10 lg:h-12 w-auto"
+            />
             <span className="font-display font-bold text-xl text-neutral-900 hidden sm:block">
               THE ALPHA NETWORK
             </span>
