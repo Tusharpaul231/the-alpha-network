@@ -246,7 +246,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map Section (Placeholder) */}
+      {/* Map Section */}
       <section className="section-padding bg-neutral-50">
         <div className="container-custom">
           <motion.div
@@ -255,9 +255,11 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <h2 className="font-display font-bold text-3xl text-neutral-900 mb-8 text-center">
-              Our Location
+              Visit Our Office
             </h2>
-            <div className="aspect-[21/9] rounded-xl overflow-hidden shadow-xl">
+            
+            {/* Map */}
+            <div className="aspect-[21/9] rounded-xl overflow-hidden shadow-2xl mb-6">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113842.0722045011!2d88.39431592500001!3d26.7271012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e441e2d6dd0ff9%3A0x27f9a2e4836a1d60!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                 width="100%"
@@ -266,21 +268,40 @@ export default function Contact() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Alpha Network Location"
+                title="Alpha Network Location - Siliguri, West Bengal"
               ></iframe>
             </div>
-            <div className="mt-6 text-center">
-              <p className="text-neutral-600">
-                📍 4th Floor, Wownooks, D L Infiniti, Don Bosco More, Sevoke Rd, Ward 43, Siliguri, West Bengal 734001
-              </p>
-              <a 
-                href="https://www.google.com/maps/place/Wownooks+Siliguri/@26.7466033,88.4374592,17z/data=!3m1!4b1!4m6!3m5!1s0x39e441fc6b2690b1:0xf7a414a8eee02606!8m2!3d26.7466033!4d88.4374592!16s%2Fg%2F11yf7ktwys?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-              >
-                Open in Google Maps
-              </a>
+            
+            {/* Location Details */}
+            <div className="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+              <div className="flex items-start space-x-4 mb-4">
+                <MapPin className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <h3 className="font-display font-bold text-xl text-neutral-900 mb-2">
+                    Alpha Network Headquarters
+                  </h3>
+                  <p className="text-neutral-700 leading-relaxed">
+                    📍 4th Floor, Wownooks, D L Infiniti, Don Bosco More, Sevoke Rd, Ward 43, Siliguri, West Bengal 734001
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-4 mt-6">
+                <a 
+                  href="https://www.google.com/maps/place/Wownooks+Siliguri/@26.7466033,88.4374592,17z/data=!3m1!4b1!4m6!3m5!1s0x39e441fc6b2690b1:0xf7a414a8eee02606!8m2!3d26.7466033!4d88.4374592!16s%2Fg%2F11yf7ktwys?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors font-semibold"
+                >
+                  Get Directions
+                </a>
+                <a 
+                  href="tel:+917074041201"
+                  className="flex-1 text-center px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors font-semibold"
+                >
+                  Call Us
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
