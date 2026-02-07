@@ -4,9 +4,11 @@ import {
   getProductBySlug,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  uploadProductImages
 } from '../controllers/productController.js'
 import { validate } from '../middleware/validator.js'
+import { protect } from '../middleware/auth.js'
 import { body } from 'express-validator'
 
 const router = express.Router()
@@ -15,9 +17,10 @@ const router = express.Router()
 router.get('/', getProducts)
 router.get('/:slug', getProductBySlug)
 
-// Admin routes (add auth middleware in production)
+// Admin routes (protected)
 router.post(
   '/',
+  protect,
   [
     body('name').notEmpty().trim(),
     body('slug').notEmpty().trim().toLowerCase(),
@@ -28,7 +31,8 @@ router.post(
   createProduct
 )
 
-router.put('/:id', updateProduct)
-router.delete('/:id', deleteProduct)
+router.put('/:id', protect, updateProduct)
+router.delete('/:id', protect, deleteProduct)
+router.post('/:id/images', protect, uploadProductImages)
 
 export default router

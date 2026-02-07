@@ -7,6 +7,7 @@ import {
 import { validate } from '../middleware/validator.js'
 import { body } from 'express-validator'
 import { rateLimiter } from '../middleware/rateLimiter.js'
+import { protect } from '../middleware/auth.js'
 
 const router = express.Router()
 
@@ -24,8 +25,8 @@ router.post(
   submitQuery
 )
 
-// Admin routes (add auth middleware in production)
-router.get('/', getQueries)
-router.patch('/:id', updateQueryStatus)
+// Admin routes (protected)
+router.get('/', protect, getQueries)
+router.patch('/:id', protect, updateQueryStatus)
 
 export default router

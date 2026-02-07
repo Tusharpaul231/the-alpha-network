@@ -134,3 +134,35 @@ export const deleteProduct = async (req, res, next) => {
     next(error)
   }
 }
+
+// @desc    Upload product images
+// @route   POST /api/products/:id/images
+// @access  Private/Admin
+export const uploadProductImages = async (req, res, next) => {
+  try {
+    const { images } = req.body // Array of base64 or URLs
+
+    const product = await Product.findById(req.params.id)
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found'
+      })
+    }
+
+    // Add images to product
+    product.images = images.map((img, index) => ({
+      url: img,
+      publicId: `product-${product._id}-${index}`
+    }))
+
+    await product.save()
+
+    res.json({
+      success: true,
+      data: product
+    })
+  } catch (error) {
+    next(error)
+  }
+}

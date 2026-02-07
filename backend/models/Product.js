@@ -40,6 +40,16 @@ const productSchema = new mongoose.Schema(
       url: String,
       publicId: String
     }],
+    faqs: [{
+      question: {
+        type: String,
+        required: true
+      },
+      answer: {
+        type: String,
+        required: true
+      }
+    }],
     brochureUrl: {
       type: String
     },
