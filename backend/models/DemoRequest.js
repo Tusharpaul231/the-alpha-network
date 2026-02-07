@@ -33,7 +33,7 @@ const demoRequestSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['pending', 'contacted', 'scheduled', 'completed', 'cancelled'],
+      enum: ['pending','on-progress', 'contacted', 'deal-closed-success', 'deal-closed-canceled'],
       default: 'pending'
     },
     source: {

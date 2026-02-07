@@ -26,7 +26,7 @@ const querySchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['new', 'in-progress', 'resolved', 'closed'],
+      enum: ['new', 'on-progress', 'solved'],
       default: 'new'
     },
     priority: {

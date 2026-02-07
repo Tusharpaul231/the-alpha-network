@@ -245,7 +245,16 @@ export default function ProductDetail() {
                   >
                     Request Demo
                   </button>
-                  <button className="btn-secondary flex items-center space-x-2">
+                  <button 
+                    onClick={() => {
+                      if (product.brochureUrl) {
+                        window.open(product.brochureUrl, '_blank')
+                      } else {
+                        alert('Brochure not available for this product')
+                      }
+                    }}
+                    className="btn-secondary flex items-center space-x-2"
+                  >
                     <Download size={18} />
                     <span>Download Brochure</span>
                   </button>

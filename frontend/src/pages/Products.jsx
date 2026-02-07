@@ -1,46 +1,35 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { getProducts } from '../services/api'
 
 export default function Products() {
-  const products = [
-    {
-      id: 1,
-      name: 'Alpha Deep Tissue Massager',
-      category: 'Healthcare & Wellness',
-      description: 'Professional-grade percussion therapy device with 6 speed levels and interchangeable massage heads',
-      features: ['24V Brushless Motor', '6 Speed Levels', 'Up to 5 Hour Battery', '6 Massage Heads'],
-      image: '💆',
-      slug: 'alpha-deep-tissue-massager'
-    },
-    {
-      id: 2,
-      name: 'VR Solutions',
-      category: 'Education & Training',
-      description: 'Immersive virtual reality systems for education, training, and experiential learning',
-      features: ['4K Resolution', 'Room-Scale Tracking', 'Educational Content', 'Multi-User Support'],
-      image: '🥽',
-      slug: 'vr-solutions'
-    },
-    {
-      id: 3,
-      name: 'Interactive Flat Panel',
-      category: 'Education',
-      description: '75" 4K Ultra HD Interactive Display with integrated K-12 content and classroom management',
-      features: ['4K UHD Display', 'K-12 Curriculum', 'Touch Technology', 'Cloud Integration'],
-      image: '📺',
-      slug: 'interactive-flat-panel'
-    },
-    {
-      id: 4,
-      name: 'Alpha Restaurant Robot',
-      category: 'Hospitality',
-      description: 'Autonomous serving robot for restaurants, hotels, and cafes with LIDAR navigation',
-      features: ['Autonomous Navigation', 'LIDAR Technology', '10-Hour Battery', 'Touch Display'],
-      image: '🤖',
-      slug: 'alpha-restaurant-robot'
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    try {
+      const response = await getProducts()
+      setProducts(response.data || [])
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-neutral-500">Loading products...</div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen">
@@ -65,67 +54,81 @@ export default function Products() {
       {/* Products Grid */}
       <section className="section-padding bg-neutral-50">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8">
-            {products.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
-              >
-                <div className="flex flex-col md:flex-row">
-                  {/* Product Image */}
-                  <div className="md:w-2/5 aspect-square md:aspect-auto overflow-hidden bg-neutral-200">
-                    <img 
-                      src={`/images/products/${product.slug}/thumbnail.jpeg`}
-                      alt={product.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = 'https://via.placeholder.com/800x600?text=' + encodeURIComponent(product.name)
-                      }}
-                    />
-                  </div>
-
-                  {/* Product Info */}
-                  <div className="md:w-3/5 p-6 flex flex-col">
-                    <div className="mb-2">
-                      <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                        {product.category}
-                      </span>
-                    </div>
-                    <h3 className="font-display font-bold text-2xl text-neutral-900 mb-3">
-                      {product.name}
-                    </h3>
-                    <p className="text-neutral-600 mb-4 flex-grow">
-                      {product.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="grid grid-cols-2 gap-2 mb-6">
-                      {product.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center space-x-2 text-sm text-neutral-700">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                          <span>{feature}</span>
+          {products.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-neutral-500 text-lg">No products available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              {products.map((product, index) => (
+                <motion.div
+                  key={product._id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                >
+                  <div className="flex flex-col md:flex-row">
+                    {/* Product Image */}
+                    <div className="md:w-2/5 aspect-square md:aspect-auto overflow-hidden bg-neutral-200">
+                      {product.images && product.images.length > 0 ? (
+                        <img 
+                          src={product.images[0].url}
+                          alt={product.name}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'https://via.placeholder.com/600x600?text=' + encodeURIComponent(product.name)
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-8xl">
+                          📦
                         </div>
-                      ))}
+                      )}
                     </div>
 
-                    {/* Actions */}
-                    <Link
-                      to={`/products/${product.slug}`}
-                      className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors group-hover:shadow-lg"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                    {/* Product Info */}
+                    <div className="md:w-3/5 p-6 flex flex-col">
+                      <div className="mb-2">
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                          {product.category}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-bold text-2xl text-neutral-900 mb-3">
+                        {product.name}
+                      </h3>
+                      <p className="text-neutral-600 mb-4 flex-grow line-clamp-3">
+                        {product.tagline || product.description}
+                      </p>
+
+                      {/* Features */}
+                      {product.features && product.features.length > 0 && (
+                        <div className="grid grid-cols-2 gap-2 mb-6">
+                          {product.features.slice(0, 4).map((feature, idx) => (
+                            <div key={idx} className="flex items-center space-x-2 text-sm text-neutral-700">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                              <span className="line-clamp-1">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Actions */}
+                      <Link
+                        to={`/products/${product.slug}`}
+                        className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors group-hover:shadow-lg"
+                      >
+                        <span>View Details</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
